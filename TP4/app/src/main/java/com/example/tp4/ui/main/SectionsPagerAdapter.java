@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.tp4.AnimalsFragment;
+import com.example.tp4.MainFragment;
 import com.example.tp4.MineralsFragment;
 import com.example.tp4.R;
 
@@ -28,9 +29,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                fragment = new MineralsFragment();
+                fragment = new MainFragment();
                 break;
             case 1:
+                fragment = new MineralsFragment();
+                break;
+            case 2:
                 fragment = new AnimalsFragment();
                 break;
         }
@@ -43,9 +47,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Fragment 1";
+                return "Main";
             case 1:
-                return "Fragment 2";
+                return "Minerals";
+            case 2:
+                return "Animals";
         }
 
         return null;
@@ -53,6 +59,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }
