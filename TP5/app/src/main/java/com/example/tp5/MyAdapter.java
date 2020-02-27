@@ -12,14 +12,22 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.DataContainer> {
     private ArrayList<Data> data;
+    private static OnClickRecyclerListener onClickRecyclerListener;
 
-    public static class DataContainer extends RecyclerView.ViewHolder {
+    public static class DataContainer extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView mainTextView, secondaryTextView;
 
         public DataContainer(View itemView) {
             super(itemView);
             mainTextView = itemView.findViewById(R.id.mainTextView);
             secondaryTextView = itemView.findViewById(R.id.secondaryTextView);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onClickRecyclerListener.itemClicked(getAdapterPosition(), itemView);
         }
     }
 
@@ -44,5 +52,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.DataContainer> {
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void setOnClickRecyclerListener(OnClickRecyclerListener onClickRecyclerListener) {
+        this.onClickRecyclerListener = onClickRecyclerListener;
     }
 }
