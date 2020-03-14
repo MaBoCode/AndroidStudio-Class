@@ -45,13 +45,13 @@ public class HourService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Toast.makeText(getApplicationContext(), "Service started.", Toast.LENGTH_SHORT).show();
         initService();
         //SystemClock.sleep(30000);
         return Service.START_NOT_STICKY;
     }
 
     private void initService() {
-        Toast.makeText(getApplicationContext(), "Service started.", Toast.LENGTH_SHORT).show();
         timer = new Timer();
         timer.scheduleAtFixedRate(new CustomTimerTask(), 0, 5000);
     }

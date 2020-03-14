@@ -20,13 +20,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(!serviceStarted) {
-                serviceStarted = true;
-                startService(timeIntent);
-                serviceActionButton.setText(R.string.service_action_stop);
+                startServiceHelper();
             } else {
-                serviceStarted = false;
-                stopService(timeIntent);
-                serviceActionButton.setText(R.string.service_action_start);
+                stopServiceHelper();
             }
         }
     };
@@ -77,5 +73,33 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    public void startServiceHelper() {
+        serviceStarted = true;
+        startService(timeIntent);
+        serviceActionButton.setText(R.string.service_action_stop);
+    }
+
+    public void stopServiceHelper() {
+        serviceStarted = false;
+        stopService(timeIntent);
+        serviceActionButton.setText(R.string.service_action_start);
+    }
+
+    @Override
+    protected void onStop() {
+        //Called when app goes in background
+        super.onStop();
+
+        stopServiceHelper();
+    }
+
+    @Override
+    protected void onStart() {
+        //Called when app is in foreground
+        super.onStart();
+
+        startServiceHelper();
     }
 }
