@@ -30,8 +30,8 @@ public class HourService extends Service {
 
         @Override
         public void run() {
-            //updateUI.sendEmptyMessage(0);
-            //SystemClock.sleep(5000);
+            updateUI.sendEmptyMessage(0);
+            SystemClock.sleep(5000);
         }
     }
 

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">TP6</string>
-    <string name="service_button">Start</string>
+    <string name="service_action_start">Start</string>
+    <string name="service_action_stop">Stop</string>
+
+    <string name="service_state_stop">Service Stopped</string>
+    <string name="service_state_running">Service Running</string>
 </resources>
