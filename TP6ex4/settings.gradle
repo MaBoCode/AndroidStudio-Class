@@ -1,0 +1,2 @@
+rootProject.name='TP6ex4'
+include ':app'
